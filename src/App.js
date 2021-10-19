@@ -1,11 +1,19 @@
+import PropTypes from 'prop-types';
 
-function Food({name, picture}) {
+function Food({name, picture, raiting}) {
   return(
     <div>
       <h3>я люблю {name}</h3>
+      <h4>{raiting}/5</h4>
       <img src={picture} alt="" height='300px' />
     </div>
   );
+}
+
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  raiting: PropTypes.number.isRequired
 }
 
 const foodILike = [
@@ -39,7 +47,7 @@ function App() {
   return (
     <div>
       <h1>Hello</h1>
-      {foodILike.map(dish => <Food key={dish.id} name={dish.name} picture={dish.image} />)}
+      {foodILike.map(dish => <Food key={dish.id} name={dish.name} picture={dish.image} raiting={dish.raiting} />)}
     </div>
   );
 }
